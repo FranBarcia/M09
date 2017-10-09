@@ -16,7 +16,8 @@ public class CaculMultiplicacioFactorial {
 
         double sum = 0;
         
-        // Comentario de Fran desde Portatil
+        Factorial factorial = new Factorial(9);
+        
         
         System.out.println(sum);
 
