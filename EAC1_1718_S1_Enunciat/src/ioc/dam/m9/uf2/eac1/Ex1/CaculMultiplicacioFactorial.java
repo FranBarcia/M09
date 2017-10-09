@@ -15,15 +15,9 @@ public class CaculMultiplicacioFactorial {
     public static void main(String[] args) {
 
         double sum = 0;
-        try {
-            int count = Runtime.getRuntime().availableProcessors();
-            ScheduledExecutorService servei = Executors.newScheduledThreadPool(count);
-            servei.awaitTermination(60, TimeUnit.SECONDS);
-            servei.shutdownNow();
-        } catch (InterruptedException ex) {
-        }
-       
-
+        
+        // Comentario de Fran desde Portatil
+        
         System.out.println(sum);
 
     }
