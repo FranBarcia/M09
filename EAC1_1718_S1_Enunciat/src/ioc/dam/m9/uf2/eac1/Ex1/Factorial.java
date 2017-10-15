@@ -15,7 +15,6 @@ public class Factorial implements Callable<Double> {
         for (int i = 1; i <= perCalcular; i++) {
             fact *= i;
         }
-//        System.out.println("Factorial de "+perCalcular+": "+fact);
     }
     
     @Override

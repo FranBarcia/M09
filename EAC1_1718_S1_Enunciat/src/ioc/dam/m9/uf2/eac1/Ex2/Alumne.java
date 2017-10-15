@@ -12,6 +12,20 @@ public class Alumne {
         this.codi = codi;
         this.notaF = notaF;
     }
-    
-    
+
+    public int getCodi() {
+        return codi;
+    }
+
+    public void setCodi(int codi) {
+        this.codi = codi;
+    }
+
+    public double getNotaF() {
+        return notaF;
+    }
+
+    public void setNotaF(double notaF) {
+        this.notaF = notaF;
+    }
 }
