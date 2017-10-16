@@ -8,8 +8,8 @@ import java.util.Random;
  */
 public class Client extends Thread {
     int id;
-      Supermercat sup;
-      boolean sortir;
+    Supermercat sup;
+    boolean sortir;
 
     public Client(int id, Supermercat sup) {
         this.id = id;
@@ -18,12 +18,12 @@ public class Client extends Thread {
 
   
    public void run() {
-       Random r= new Random();
-       sup.arribaClient(id);
+        Random r= new Random();
+        sup.arribaClient(id);
         try {
             //Compra
             sleep(4000);
-            int numCaixa=r.nextInt(sup.numCaixes);
+            int numCaixa = r.nextInt(sup.numCaixes);
             sup.passaACuaCaixa(id, numCaixa);
             sup.passaAPagar(numCaixa);
             //Paga
