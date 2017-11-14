@@ -7,7 +7,13 @@ package ioc.dam.m9.uf3.eac2.ex1;
 public class MajusculaServidor {
 
     public void servei() {
-
+        /*
+        Aquesta classe estarà sempre “escoltant”. 
+        Quan rebi un text d'un client:
+            - el convertirà a majúscules
+            - li retornarà. 
+        Tot ho farà a través del mètode servei()
+        */
     }
 
     public static void main(String[] args) {
