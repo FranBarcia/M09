@@ -8,6 +8,5 @@ public class ClientMatematic {
 
     public static void main(String[] args) {
         
-
     }
 }
