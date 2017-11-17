@@ -38,7 +38,6 @@ public class MajusculaClient {
         socol.receive(paquet);
         missatgeRebut = new String(paquet.getData(), 0, paquet.getLength(), "ISO-8859-15");
         System.out.println("M'han tornat això: "+missatgeRebut);
-        System.out.println("Ja ni ha prou de conversar, ara tanco la connexió.");
         
         socol.close();
             
