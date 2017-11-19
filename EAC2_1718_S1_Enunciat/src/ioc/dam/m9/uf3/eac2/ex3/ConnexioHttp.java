@@ -27,9 +27,9 @@ public class ConnexioHttp {
     // petició GET
     private void enviaGet(){
         try {
-            URL url = new URL("http://www.google.com");
-            HttpURLConnection connection = (HttpURLConnection)url.openConnection();
-            connection.setRequestMethod("GET");
+            URL url = new URL("https://www.caixabank.cat/index_ca.html");
+            HttpURLConnection conexio = (HttpURLConnection)url.openConnection();
+            conexio.setRequestMethod("GET");
         } catch (IOException ex) {
             Logger.getLogger(ConnexioHttp.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -38,9 +38,9 @@ public class ConnexioHttp {
     // petició POST
     private void enviaPost()  {
         try {
-            URL url = new URL("http://www.google.com");
-            HttpURLConnection connection = (HttpURLConnection)url.openConnection();
-            connection.setRequestMethod("POST");
+            URL url = new URL("http://www.plasticoselche.es/es/login");
+            HttpURLConnection conexio = (HttpURLConnection)url.openConnection();
+            conexio.setRequestMethod("POST");
         } catch (IOException ex) {
             Logger.getLogger(ConnexioHttp.class.getName()).log(Level.SEVERE, null, ex);
         }
