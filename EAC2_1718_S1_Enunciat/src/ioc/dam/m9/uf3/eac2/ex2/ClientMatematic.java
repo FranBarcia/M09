@@ -36,6 +36,7 @@ public class ClientMatematic {
             resposta = entrada.readLine();
             
             System.out.println("He rebut del servidor això: "+resposta);
+            socolClient.close();
             
         } catch (IOException ex) {
             System.out.println("No s'ha pogut establir la conexió amb el servidor");

@@ -82,10 +82,10 @@ public class ServidorMatematic {
         System.out.println("El servidor matemàtic està executant...");
         
         ServidorMatematic mats = new ServidorMatematic();
-        
         socolServidor = new ServerSocket(9999);
         socolClient = socolServidor.accept();
         mats.executa();
+        socolServidor.close();
         
         System.out.println("El servidor matemàtic s'ha tancat...");
     }
