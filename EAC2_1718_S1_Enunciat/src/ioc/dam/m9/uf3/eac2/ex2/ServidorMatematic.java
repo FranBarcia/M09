@@ -17,6 +17,7 @@ public class ServidorMatematic {
     private static ServerSocket socolServidor;
     private static Socket socolClient;
     private String operacioRebuda;
+    private String resposta;
     private double resultat;
     private PrintStream sortida;
     private BufferedReader entrada;
@@ -29,10 +30,16 @@ public class ServidorMatematic {
             System.out.println("He rebut del client això: "+operacioRebuda);
             resultat = analitza(operacioRebuda);
             
+            if (resultat != 0) {
+                resposta = "Resultat de la operació: "+resultat;
+            } else {
+                resposta = "Operació no vàlida";
+            }
+            
             // Enviar resposta
             sortida = new PrintStream(socolClient.getOutputStream());
-            System.out.println("Envio al client la resposta a la operació: "+resultat);
-            sortida.println(resultat);
+            System.out.println("Envio al client això: "+resposta);
+            sortida.println(resposta);
             sortida.flush();
             
         } catch (IOException ex) {

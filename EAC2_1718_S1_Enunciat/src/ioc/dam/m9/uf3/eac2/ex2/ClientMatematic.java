@@ -18,7 +18,7 @@ public class ClientMatematic {
     public static void main(String[] args) {
         String adresa = "localhost";
         Integer port = 9999;
-        String operacio = "a:214.25:8"; // Resultat: 1714
+        String operacio = "*:214.25:8"; // Resultat: 1714
         String resposta;
         PrintStream sortida;
         BufferedReader entrada;
@@ -40,7 +40,7 @@ public class ClientMatematic {
             System.out.println("He rebut del servidor això: "+resposta);
             
         } catch (IOException ex) {
-            Logger.getLogger(ClientMatematic.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("No s'ha pogut establir la conexió amb el servidor");
         }
     }
 }
