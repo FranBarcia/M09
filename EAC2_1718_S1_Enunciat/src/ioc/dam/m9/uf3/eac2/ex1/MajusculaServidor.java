@@ -21,7 +21,8 @@ public class MajusculaServidor {
         
         String missatge;
 
-        //el servidor atén el port indefinidament
+        // El servidor atén el port indefinidament
+        // Es posdria definir una condició d'aturada.
         while(true){
             //creació del paquet per rebre les dades
             DatagramPacket paquet = new DatagramPacket(dadesRebudes, 1024);
@@ -34,12 +35,6 @@ public class MajusculaServidor {
             missatge = missatge.toUpperCase();
             dadesEnviades = getBytes(missatge);
             System.out.println("Enviaré: "+missatge);
-            /*
-            private byte[] processData(byte[] data, int length) {
-            //procés diferent per cada aplicació
-
-            }
-            */
             //obtenció de l'adreça i el port del client
             clientIP = paquet.getAddress();
             clientPort = paquet.getPort();

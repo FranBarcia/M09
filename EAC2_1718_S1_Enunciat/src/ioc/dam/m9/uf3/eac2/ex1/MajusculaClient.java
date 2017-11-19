@@ -40,15 +40,5 @@ public class MajusculaClient {
         System.out.println("M'han tornat això: "+missatgeRebut);
         
         socol.close();
-            
-        
-        /*
-        Aquesta classe només tindrà el mètode main que és el que heu d'implementar.
-        Aquest mètode simplement:
-            - demanarà un text a l'usuari, 
-            - l'enviarà al servidor, 
-            - mostrarà per pantalla la resposta
-            - finalitzarà l'execució.
-        */
     }
 }
