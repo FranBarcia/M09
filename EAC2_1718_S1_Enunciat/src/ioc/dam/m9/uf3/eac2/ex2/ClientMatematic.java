@@ -18,7 +18,7 @@ public class ClientMatematic {
     public static void main(String[] args) {
         String adresa = "localhost";
         Integer port = 9999;
-        String operacio = "*:214,25:8"; // Resultat: 1714
+        String operacio = "*:214.25:8"; // Resultat: 1714
         String resposta;
         PrintStream sortida;
         BufferedReader entrada;
@@ -27,7 +27,7 @@ public class ClientMatematic {
             // conectar con server localhost:9999
             Socket socolClient = new Socket(InetAddress.getByName(adresa), port);
             
-            // enviar operacion op:v1:v2, enviarem 214,25 * 8
+            // enviar operacion op:v1:v2, enviarem 214.25 * 8
             sortida = new PrintStream(socolClient.getOutputStream());
             System.out.println("Envio al server la opreració: "+operacio);
             sortida.println(operacio);
