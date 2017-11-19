@@ -18,7 +18,7 @@ public class ClientMatematic {
     public static void main(String[] args) {
         String adresa = "localhost";
         Integer port = 9999;
-        String operacio = "*:214.25:8"; // Resultat: 1714
+        String operacio = "a:214.25:8"; // Resultat: 1714
         String resposta;
         PrintStream sortida;
         BufferedReader entrada;
