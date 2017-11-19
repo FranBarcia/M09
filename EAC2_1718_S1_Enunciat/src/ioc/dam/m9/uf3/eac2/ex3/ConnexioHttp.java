@@ -1,5 +1,11 @@
 package ioc.dam.m9.uf3.eac2.ex3;
 
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author albert
@@ -20,11 +26,23 @@ public class ConnexioHttp {
 
     // petició GET
     private void enviaGet(){
-
+        try {
+            URL url = new URL("http://www.google.com");
+            HttpURLConnection connection = (HttpURLConnection)url.openConnection();
+            connection.setRequestMethod("GET");
+        } catch (IOException ex) {
+            Logger.getLogger(ConnexioHttp.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     // petició POST
     private void enviaPost()  {
-
+        try {
+            URL url = new URL("http://www.google.com");
+            HttpURLConnection connection = (HttpURLConnection)url.openConnection();
+            connection.setRequestMethod("POST");
+        } catch (IOException ex) {
+            Logger.getLogger(ConnexioHttp.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }
