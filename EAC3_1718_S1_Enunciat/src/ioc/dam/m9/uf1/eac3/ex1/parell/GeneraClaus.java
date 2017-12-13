@@ -13,7 +13,6 @@ public class GeneraClaus {
     private PublicKey publica;
 
     public GeneraClaus(int longitud) {
-        
     }
 
     public PrivateKey getPrivada() {
