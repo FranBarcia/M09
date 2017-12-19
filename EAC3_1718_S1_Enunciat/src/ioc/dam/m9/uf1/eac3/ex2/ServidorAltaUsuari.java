@@ -1,31 +1,34 @@
 package ioc.dam.m9.uf1.eac3.ex2;
 
+import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintStream;
 import java.security.KeyManagementException;
 import java.security.KeyStore;
 import java.security.KeyStoreException;
 import java.security.NoSuchAlgorithmException;
 import java.security.UnrecoverableKeyException;
 import java.security.cert.CertificateException;
-import java.util.Scanner;
 import javax.net.ssl.KeyManagerFactory;
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.SSLServerSocket;
 import javax.net.ssl.SSLServerSocketFactory;
 import javax.net.ssl.SSLSocket;
 
-
 /**
  *
  * @author albert
  */
 public class ServidorAltaUsuari {
-    
+
     private static int port = 7000;
     
-    public static void main(String[] args) throws NoSuchAlgorithmException, FileNotFoundException, IOException, KeyManagementException, CertificateException, UnrecoverableKeyException, KeyStoreException {
+    public static void main(String[] args) throws IOException, NoSuchAlgorithmException, KeyStoreException, CertificateException, UnrecoverableKeyException, KeyManagementException {
+        System.setProperty("javax.net.debug", "SSL,handshake");
+        
         KeyManagerFactory factoriaKeystore = KeyManagerFactory.getInstance("SunX509");
         KeyStore keystore = KeyStore.getInstance("JKS");
         
@@ -49,12 +52,19 @@ public class ServidorAltaUsuari {
         
         while (true) {
             SSLSocket sslSocket = (SSLSocket) serverSSL.accept();
-            Scanner lector = new Scanner(sslSocket.getInputStream());
             
-            usuari = lector.nextLine();
-            System.out.println("Usuari: "+usuari);
-            contrasenya = lector.nextLine();
-            System.out.println("Contrasenya: "+contrasenya);
+            PrintStream sortida = new PrintStream(sslSocket.getOutputStream(), true, "UTF-8");
+            sortida.print("Benvingut al registre\n\nIntrodueix el nom d'usuari: ");
+            //sortida.flush();
+            
+            BufferedReader entrada = new BufferedReader(new InputStreamReader(sslSocket.getInputStream()));
+            usuari = entrada.readLine();
+            
+            sortida.print("Introdueix la contrasenya: ");
+            //sortida.flush();
+            contrasenya = entrada.readLine();
+            
+            System.out.println("Donat d'alta l'usuari:\nUsuari: "+usuari+"\nContrasenya: "+contrasenya);
         }
     }
 }
