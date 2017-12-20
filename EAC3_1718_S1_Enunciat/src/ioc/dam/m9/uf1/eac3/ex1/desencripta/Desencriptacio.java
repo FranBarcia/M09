@@ -26,12 +26,12 @@ public class Desencriptacio {
 
     //-----------------------------------------------------------------
     public void desencriptaClau(PrivateKey clauPrivada, File clauEncriptadaRebuda, File fitxerClauDesencriptat, String algorisme) {
-
+        
     }
 
     //----------------------------------------------------------------------------
     public void desencriptaDades(File fitxerEncriptatRebut, File fitxerDesencriptat, SecretKeySpec clauSecreta, String algorisme) {
-
+        
     }
 
     public static void main(String[] args) throws IOException, Exception {

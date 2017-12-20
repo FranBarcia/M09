@@ -3,11 +3,10 @@ package ioc.dam.m9.uf1.eac3.ex1.parell;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.security.NoSuchAlgorithmException;
+import java.security.KeyPair;
+import java.security.KeyPairGenerator;
 import java.security.PrivateKey;
 import java.security.PublicKey;
-import javax.crypto.KeyGenerator;
-import javax.crypto.SecretKey;
 
 public class GeneraClaus {
 
@@ -15,16 +14,16 @@ public class GeneraClaus {
     private PublicKey publica;
 
     public GeneraClaus(int longitud) {
-        SecretKey sKey = null;
-        
         try {
-            KeyGenerator kgen = KeyGenerator.getInstance("RSA");
-            kgen.init(1024);
-            sKey = kgen.generateKey();
-        } catch (NoSuchAlgorithmException ex) {
-            System.err.println("Generador no disponible.");
+           KeyPair claus = null;
+           KeyPairGenerator generadorClaus = KeyPairGenerator.getInstance("RSA");
+           generadorClaus.initialize(longitud);
+           claus = generadorClaus.genKeyPair();
+           this.privada = claus.getPrivate();
+           this.publica = claus.getPublic();
+        } catch (Exception ex) {
+           System.err.println("Generador no disponible.");
         }
-        
     }
 
     public PrivateKey getPrivada() {

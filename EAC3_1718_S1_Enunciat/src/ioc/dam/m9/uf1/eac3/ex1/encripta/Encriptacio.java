@@ -8,6 +8,7 @@ import java.nio.file.Files;
 import java.security.KeyFactory;
 import java.security.PublicKey;
 import java.security.spec.X509EncodedKeySpec;
+import javax.crypto.Cipher;
 
 import javax.crypto.spec.SecretKeySpec;
 
@@ -30,13 +31,21 @@ public class Encriptacio {
     //----------------------------------------------------------------
     
     public void encriptaDades(File original, File encriptat, SecretKeySpec clauSecreta, String algorismeXifrat) {
-      
-
+        
+	//public byte[] encryptData(SecretKey sKey, byte[] data) {
+        byte[] encryptedData = null;
+        try {
+            Cipher cipher = Cipher.getInstance(algorismeXifrat);
+            cipher.init(Cipher.ENCRYPT_MODE, clauSecreta);
+            encryptedData = cipher.doFinal(original);
+        } catch (Exception ex) {
+            System.err.println("Error xifrant les dades: " + ex);
+        }
     }
 
     //--------------------------------------------------------------
     public void encriptaClau(PublicKey clau, File fitxerClauOriginal, File fitxerClauEncriptada, String algorismeXifrat) {
-
+        
     }
 
     
