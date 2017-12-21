@@ -14,7 +14,10 @@ import javax.crypto.spec.SecretKeySpec;
 
 public class Encriptacio {
     
-    
+    private File original;
+    private File encriptat;
+    private SecretKeySpec clauSecreta;
+    private String algorismeXifrat;
     
     public PublicKey getPublica(String fitxer, String algorisme) throws Exception {
         byte[] bytesClau = Files.readAllBytes(new File(fitxer).toPath());
@@ -45,15 +48,30 @@ public class Encriptacio {
 
     //--------------------------------------------------------------
     public void encriptaClau(PublicKey clau, File fitxerClauOriginal, File fitxerClauEncriptada, String algorismeXifrat) {
+        byte[] encryptedData = null;
+        try {
+            Cipher cipher = Cipher.getInstance(algorismeXifrat);
+            cipher.init(Cipher.ENCRYPT_MODE, clau);
+            byte[] fitxerBytes = fitxerEnBytes(fitxerClauOriginal);
+            encryptedData = cipher.doFinal(fitxerBytes);
+            escriuAFitxer(fitxerClauEncriptada, encryptedData);
+        } catch (Exception ex) {
+            System.err.println("Error xifrant la clau: " + ex);
+        }
         /*
-        El mètode encriptaClau rep com a paràmetres la clau pública que s'utilitzarà per l'encriptació, dos fitxers (el primer conté la clau simètrica i el segon és el fitxer de sortida) i un String amb el nom de l'algorisme utilitzat per al xifrat.*/
+         * El mètode encriptaClau rep com a paràmetres:
+         * - la clau pública que s'utilitzarà per l'encriptació
+         * - la clau simètrica
+         * - fitxer de sortida
+         * - el nom de l'algorisme utilitzat per al xifrat
+        */
     }
 
     
       
     
     public static void main(String[] args) throws IOException, Exception {
-        
+        //encriptaDades(original, encriptat, clauSecreta, algorismeXifrat);
     }
 
         
