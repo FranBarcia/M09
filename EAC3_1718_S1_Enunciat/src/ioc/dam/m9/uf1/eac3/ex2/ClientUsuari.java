@@ -28,10 +28,17 @@ public class ClientUsuari {
     private static int port = 7000;
     
     public static void main(String[] argv) throws IOException, NoSuchAlgorithmException, KeyStoreException, CertificateException, UnrecoverableKeyException, KeyManagementException {
+        //System.setProperty("javax.net.debug", "SSL,handshake");
+        
         KeyManagerFactory factoriaKeystore = KeyManagerFactory.getInstance("SunX509");
         KeyStore keystore = KeyStore.getInstance("JKS");
         
-        FileInputStream fileIn = new FileInputStream("eac4_1718s1.jks");
+        /*  Tinc dos keystores, el eac4_1718s1.jks, que em funciona en un ordinador
+            i el keystore eac4.jks que em funciona en un altre ordinador
+            Deixo els dos al projecte per si algún donés error
+        */
+        //FileInputStream fileIn = new FileInputStream("eac4_1718s1.jks");
+        FileInputStream fileIn = new FileInputStream("eac4.jks");
         
         keystore.load(fileIn, "iocioc".toCharArray()); 
         factoriaKeystore.init(keystore, "iocioc".toCharArray());
@@ -45,9 +52,6 @@ public class ClientUsuari {
         
         SSLSocketFactory factoriaSSL = sslContext.getSocketFactory();
         SSLSocket clientSSL = (SSLSocket) factoriaSSL.createSocket("localhost", port);
-        
-        String[] supported = clientSSL.getSupportedCipherSuites();
-        clientSSL.setEnabledCipherSuites(supported);
         
         PrintStream sortida = new PrintStream(clientSSL.getOutputStream(), true, "UTF-8");
         BufferedReader entrada = new BufferedReader(new InputStreamReader(clientSSL.getInputStream()));

@@ -28,17 +28,24 @@ public class ServidorAltaUsuari {
     private static int port = 7000;
     
     public static void main(String[] args) throws IOException, NoSuchAlgorithmException, KeyStoreException, CertificateException, UnrecoverableKeyException, KeyManagementException {
+        //System.setProperty("javax.net.debug", "SSL,handshake");
+        
         KeyManagerFactory factoriaKeystore = KeyManagerFactory.getInstance("SunX509");
         KeyStore keystore = KeyStore.getInstance("JKS");
         
-        FileInputStream fileIn = new FileInputStream("eac4_1718s1.jks");
+        /*  Tinc dos keystores, el eac4_1718s1.jks, que em funciona en un ordinador
+            i el keystore eac4.jks que em funciona en un altre ordinador
+            Deixo els dos al projecte per si algún donés error
+        */
+        //FileInputStream fileIn = new FileInputStream("eac4_1718s1.jks");
+        FileInputStream fileIn = new FileInputStream("eac4.jks");
+        
+        keystore.load(fileIn, "iocioc".toCharArray()); 
+        factoriaKeystore.init(keystore, "iocioc".toCharArray());
         
         TrustManagerFactory trustManagerFactory = TrustManagerFactory.getInstance("SunX509");
         trustManagerFactory.init(keystore);
         TrustManager[] tm = trustManagerFactory.getTrustManagers();
-        
-        keystore.load(fileIn, "iocioc".toCharArray()); 
-        factoriaKeystore.init(keystore, "iocioc".toCharArray());
         
         SSLContext sslContext = SSLContext.getInstance("SSL");
         sslContext.init(factoriaKeystore.getKeyManagers(), tm, null);
