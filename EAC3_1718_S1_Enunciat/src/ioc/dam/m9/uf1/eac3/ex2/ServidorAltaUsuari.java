@@ -33,11 +33,6 @@ public class ServidorAltaUsuari {
         KeyManagerFactory factoriaKeystore = KeyManagerFactory.getInstance("SunX509");
         KeyStore keystore = KeyStore.getInstance("JKS");
         
-        /*  Tinc dos keystores, el eac4_1718s1.jks, que em funciona en un ordinador
-            i el keystore eac4.jks que em funciona en un altre ordinador
-            Deixo els dos al projecte per si algún donés error
-        */
-        //FileInputStream fileIn = new FileInputStream("eac4_1718s1.jks");
         FileInputStream fileIn = new FileInputStream("eac4.jks");
         
         keystore.load(fileIn, "iocioc".toCharArray()); 
