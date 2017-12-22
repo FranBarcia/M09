@@ -34,7 +34,6 @@ public class Encriptacio {
             cipher.init(Cipher.ENCRYPT_MODE, clauSecreta);
             byte[] fitxerBytes = fitxerEnBytes(original);
             encryptedData = cipher.doFinal(fitxerBytes);
-            System.out.println("Guardo en fichero la carta encriptado");
             escriuAFitxer(encriptat, encryptedData);
         } catch (Exception ex) {
             System.err.println("Error xifrant les dades: " + ex);
@@ -49,7 +48,6 @@ public class Encriptacio {
             cipher.init(Cipher.ENCRYPT_MODE, clau);
             byte[] fitxerBytes = fitxerEnBytes(fitxerClauOriginal);
             encryptedData = cipher.doFinal(fitxerBytes);
-            System.out.println("Guardo en fichero la clave");
             escriuAFitxer(fitxerClauEncriptada, encryptedData);
         } catch (Exception ex) {
             System.err.println("Error xifrant la clau: " + ex);
